@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <title>BMI</title>
+
+    <script type="application/javascript">
+        function beregn(){
+            const navn = document.getElementById("navn").value;
+            const hoydeS = document.getElementById("hoyde").value;
+            const vektS = document.getElementById("vekt").value;
+            const hoyde = Number(hoydeS);
+            const vekt = Number(vektS);
+            if(isNaN(hoyde) || (isNaN(vekt))){
+                document.getElementById("bmi").innerHTML="<b/>Feil, høyde og vekt må være nummer</b>";
+            }
+            else {
+                const bmi = vekt/(hoyde*hoyde);
+                document.getElementById("bmi").innerText=navn+" har BMI =  "+bmi.toFixed(2);
+            }
+        }
+
+    </script>
+</head>
+<body>
+<table>
+    <tr>
+        <td>Navn</td><td><input type="text" id="navn"/></td>
+    </tr>
+    <tr>
+        <td>Høyde (m)</td><td><input type="text" id="hoyde"/></td>
+    </tr>
+    <tr>
+        <td>Vekt</td><td><input type="text" id="vekt"/></td>
+    </tr>
+    <tr>
+        <td><button value="Beregn BMI" onclick="beregn()">Beregn BMI</button></td>
+    </tr>
+</table>
+<div id="bmi"></div>
+</body>
+</html>

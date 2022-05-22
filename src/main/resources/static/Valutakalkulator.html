@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <title>Valutakalkulator</title>
+    <script type="text/javascript">
+        function beregn(){
+            let valutaArray=["USD",8.66,"EUR",10.49];
+            let utData="";
+            let belop = document.getElementById("verdiID").value;
+            let valuta = document.getElementById("valutaID").value;
+            if(belop<=0)
+            {
+                utData+="Feil, beløpet må være større enn null";
+            }
+            else if(valuta==="USD" || valuta==="EUR")
+            {
+                // beregningen her:
+                let valutaPosisjon = valutaArray.indexOf(valuta);
+                let valutaVerdi = valutaArray[valutaPosisjon+1];
+                let resultat = valutaVerdi*belop;
+                utData +=belop +" "+valuta+" blir "+resultat+" kr.";
+            }
+            else
+            {
+                utData+="Feil i valuta, må bruke USD eller EUR";
+            }
+            document.getElementById("utData").innerHTML=utData;
+        }
+    </script>
+</head>
+<body>
+<h2>Valutakalkulator</h2>
+<table>
+    <tr>
+        <td>Skriv inn beløp i utenlandsk valuta</td>
+        <td><input type="text" id="verdiID"/></td>
+    </tr>
+    <tr>
+        <td>Skriv inn type valuta (USD eller EUR)</td>
+        <td><input type="text" id="valutaID"/></td>
+    </tr>
+</table>
+<button onclick="beregn();">Beregn kr</button>
+<div id="utData"></div>
+
+<div id="feilmelding"></div>
+</body>
+</html>

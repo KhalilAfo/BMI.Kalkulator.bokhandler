@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <title>Bokhandler</title>
+
+    <script type="application/javascript">
+        function velgForfatter(){
+            const forfatter = document.getElementById("forfatter").value;
+            switch (forfatter){
+                case "Nesbø" :{
+                    let ut="Tørst<input type='checkbox' name='boker' value='Tørst'/><br>";
+                    ut+="Snømannen<input type='checkbox' name='boker' value='Snømannen'/><br>";
+                    ut+="<button onclick='velgBoker()'>Velg bøker</button>";
+                    document.getElementById("velgBoker").innerHTML=ut;
+                }
+                    break;
+                case "Horst":{
+                    let ut="Bunnfall<input type='checkbox' name='boker' value='Bunnfall'/><br>";
+                    ut+="Blindgang<input type='checkbox' name='boker' value='Blindgang'/><br>";
+                    ut+="<button onclick='velgBoker()'>Velg bøker</button>";
+                    document.getElementById("velgBoker").innerHTML=ut;
+                }
+                    break;
+                default: document.getElementById("velgBoker").innerText="Må velge forfatter!";
+                    break;
+            }
+        }
+        function velgBoker(){
+            let ut="Bøkene valgt er : <br/>";
+            const bokene = document.getElementsByName("boker");
+
+            // feilen fra forelesningen var følgende:
+            // brukte 'in', ikke 'of' i for-løkken nedenfor
+            for (let bok of bokene){
+                if(bok.checked) {
+                    ut += bok.value + " ";
+                }
+            }
+            document.getElementById("valg").innerHTML=ut;
+        }
+    </script>
+</head>
+<body>
+<h3>Kjøp bøker</h3>
+<select id="forfatter" onchange="velgForfatter()">
+    <option>-----</option>
+    <option>Nesbø</option>
+    <option>Horst</option>
+</select>
+<div id="velgBoker"></div>
+<div id="valg"></div>
+</body>
+</html>
